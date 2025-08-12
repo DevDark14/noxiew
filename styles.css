@@ -1,0 +1,1126 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Variables CSS para temas */
+:root {
+    --bg-primary: #fafafa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f7fafc;
+    --text-primary: #1a202c;
+    --text-secondary: #718096;
+    --text-tertiary: #a0aec0;
+    --border-color: #e2e8f0;
+    --border-hover: #d1d5db;
+    --accent-primary: #1a202c;
+    --accent-hover: #2d3748;
+    --success-bg: #f0fff4;
+    --success-color: #22543d;
+    --success-border: #c6f6d5;
+    --error-bg: #fff5f5;
+    --error-color: #c53030;
+    --error-border: #fed7d7;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Variables específicas para el modo oscuro */
+    --text-on-accent: white; /* Color de texto sobre color de acento */
+    --focus-ring-color: rgba(26, 32, 44, 0.1); /* Color del anillo de enfoque */
+    --membership-free-bg: #f7fafc;
+    --membership-free-text: #4a5568;
+    --membership-premium-bg: #fef5e7;
+    --membership-premium-text: #d69e2e;
+
+    /* Colores para el rango */
+    --rank-owner-bg: #d69e2e; /* Oro */
+    --rank-owner-text: white;
+
+    /* Colores para notificaciones */
+    --notification-badge-bg: #e53e3e; /* Rojo para el badge */
+    --notification-badge-text: white;
+    --notification-item-hover-bg: #f0f4f8; /* Fondo suave al pasar el ratón */
+    --notification-unread-bg: #e0f2f7; /* Fondo para notificaciones no leídas */
+    --notification-read-text: #718096; /* Color de texto para notificaciones leídas */
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-tertiary: #4a5568;
+    --text-primary: #f7fafc;
+    --text-secondary: #a0aec0;
+    --text-tertiary: #718096;
+    --border-color: #4a5568;
+    --border-hover: #718096;
+    --accent-primary: #f7fafc;
+    --accent-hover: #e2e8f0;
+    --success-bg: rgba(34, 84, 61, 0.2);
+    --success-color: #68d391;
+    --success-border: #38a169;
+    --error-bg: rgba(197, 48, 48, 0.2);
+    --error-color: #fc8181;
+    --error-border: #e53e3e;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+    /* Variables específicas para el modo oscuro */
+    --text-on-accent: var(--bg-primary); /* Texto oscuro sobre acento claro */
+    --focus-ring-color: rgba(247, 250, 252, 0.1); /* Anillo de enfoque para modo oscuro */
+    --membership-free-bg: #4a5568; /* Fondo más oscuro */
+    --membership-free-text: #a0aec0; /* Texto más claro */
+    --membership-premium-bg: rgba(214, 158, 46, 0.2); /* Fondo semitransparente naranja */
+    --membership-premium-text: #ecc94b; /* Texto naranja más brillante */
+
+    /* Colores para el rango en modo oscuro */
+    --rank-owner-bg: #ecc94b; /* Oro más brillante */
+    --rank-owner-text: #2d3748;
+
+    /* Colores para notificaciones en modo oscuro */
+    --notification-item-hover-bg: #3c4a5c;
+    --notification-unread-bg: rgba(66, 153, 225, 0.2); /* Azul suave para notificaciones no leídas */
+    --notification-read-text: #a0aec0;
+}
+
+/* Header minimalista */
+.header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.025em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-secondary); 
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-hover); 
+    background-color: var(--bg-tertiary); 
+}
+
+.nav-links a.primary {
+    background-color: var(--accent-primary); 
+    color: var(--text-on-accent); 
+}
+
+.nav-links a.primary:hover {
+    background-color: var(--accent-hover); 
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Formularios minimalistas */
+.form-container {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.form-card {
+    background: var(--bg-secondary); 
+    border-radius: 12px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border-color); 
+    box-shadow: var(--shadow); 
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary); 
+    letter-spacing: -0.025em;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-secondary); 
+    font-size: 0.875rem;
+    position: relative; 
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--border-color); 
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: var(--bg-primary); 
+    color: var(--text-primary); 
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-primary); 
+    box-shadow: 0 0 0 3px var(--focus-ring-color); 
+}
+
+.form-input::placeholder {
+    color: var(--text-tertiary); 
+}
+
+/* Botón minimalista */
+.btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-primary); 
+    color: var(--text-on-accent); 
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover); 
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Enlaces */
+.form-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-secondary); 
+    font-size: 0.875rem;
+}
+
+.form-link a {
+    color: var(--accent-primary); 
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-link a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    background: var(--bg-secondary); 
+    border-top: 1px solid var(--border-color); 
+    color: var(--text-secondary); 
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+    font-size: 0.875rem;
+}
+
+/* Mensajes */
+.message {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message-success {
+    background-color: var(--success-bg);
+    color: var(--success-color);
+    border: 1px solid var(--success-border);
+}
+
+.message-error {
+    background-color: var(--error-bg);
+    color: var(--error-color);
+    border: 1px solid var(--error-border);
+}
+
+/* Home page específico */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary); 
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary); 
+    margin-bottom: 2rem;
+}
+
+.user-info {
+    background: var(--bg-secondary); 
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color); 
+    margin: 2rem 0;
+}
+
+.user-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary); 
+    margin-bottom: 1rem;
+}
+
+.user-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color); 
+}
+
+.user-detail:last-child {
+    border-bottom: none;
+}
+
+.user-detail span:first-child {
+    color: var(--text-secondary); 
+    font-weight: 500;
+}
+
+.user-detail span:last-child {
+    color: var(--text-primary); 
+    font-weight: 500;
+}
+
+.membership-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.membership-free {
+    background-color: var(--membership-free-bg); 
+    color: var(--membership-free-text); 
+}
+
+.membership-premium {
+    background-color: var(--membership-premium-bg); 
+    color: var(--membership-premium-text); 
+}
+
+/* Membership page */
+.membership-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.plan-card {
+    background: var(--bg-secondary); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.plan-card.featured {
+    border-color: var(--accent-primary); 
+    position: relative;
+}
+
+.plan-card.featured::before {
+    content: 'Recomendado';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-primary); 
+    color: var(--text-on-accent); 
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.plan-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary); 
+    margin-bottom: 0.5rem;
+}
+
+.plan-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary); 
+    margin-bottom: 1rem;
+}
+
+.plan-price span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary); 
+}
+
+.plan-features {
+    list-style: none;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.plan-features li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary); 
+}
+
+.plan-features li::before {
+    content: '✓';
+    color: var(--success-color); 
+    font-weight: 600;
+}
+
+/* Estilos para el avatar de previsualización (en profile.php y home.php) */
+.avatar-preview {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 3px solid var(--accent-primary); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease-in-out; 
+}
+
+.avatar-preview:hover {
+    transform: scale(1.05); 
+}
+
+/* Estilos para el avatar por defecto grande (la inicial en profile.php y home.php) */
+.default-avatar-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--accent-primary); 
+    color: var(--text-on-accent); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem; 
+    font-weight: bold;
+    border: 3px solid var(--accent-primary); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ESTILOS para el avatar en el HEADER (avatar más pequeño) */
+.avatar {
+    width: 32px; 
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color); 
+    transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
+}
+
+/* ESTILOS para el avatar por defecto en el HEADER (la inicial más pequeña) */
+.default-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--accent-primary); 
+    color: var(--text-on-accent); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem; 
+    font-weight: 600;
+    border: 2px solid var(--border-color); 
+}
+
+/* Estilos para el dropdown de perfil */
+.user-profile { 
+    position: relative; /* Contenedor para posicionar el dropdown */
+    cursor: pointer;
+    /* Asegura que los elementos dentro de user-profile se alineen */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre avatar, nombre y flecha */
+    padding: 0.5rem 0.5rem; /* Permite un área de clic más grande y consistente */
+    border-radius: 6px; /* Para el hover effect */
+    transition: background-color 0.2s ease;
+}
+
+.user-profile:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.user-profile .user-name {
+    display: flex; /* Para alinear el nombre y el badge */
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre el nombre de usuario y el badge */
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%; 
+    right: 0; 
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    min-width: 180px;
+    z-index: 1000; 
+    opacity: 0; 
+    visibility: hidden; 
+    transform: translateY(10px); 
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s ease-out;
+}
+
+.profile-dropdown.active {
+    opacity: 1; 
+    visibility: visible; 
+    transform: translateY(0); 
+}
+
+.profile-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary); 
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.profile-dropdown-item:hover {
+    background-color: var(--bg-tertiary); 
+    color: var(--accent-primary); 
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color); 
+    margin: 0.5rem 0;
+}
+
+/* Estilos específicos para la página de configuración (settings.php) */
+.settings-section {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    margin-bottom: 2rem; 
+}
+
+.settings-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary); 
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color); 
+    padding-bottom: 1rem;
+}
+
+/* Layout para los campos de información personal (Nombre, Apellido, Usuario, Email) */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 1.5rem; 
+    margin-bottom: 1.5rem;
+}
+
+/* En pantallas más grandes, dos columnas */
+@media (min-width: 640px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Estilos para la sección de Foto de Perfil */
+.profile-photo-upload {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+    .profile-photo-upload {
+        flex-direction: row; 
+        align-items: center; 
+    }
+}
+
+.profile-photo-upload .avatar-preview {
+    margin-bottom: 0.5rem; 
+}
+
+/* Estilos para el contenedor de la carga de archivo */
+.file-upload-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.file-input-wrapper input[type="file"] {
+    display: none; 
+}
+
+.file-input-label {
+    background-color: var(--accent-primary); 
+    color: var(--text-on-accent); 
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.file-input-label:hover {
+    background-color: var(--accent-hover); 
+}
+
+.file-name-display {
+    color: var(--text-secondary); 
+    font-size: 0.875rem;
+    flex-grow: 1; 
+}
+
+.file-size-info {
+    color: var(--text-tertiary); 
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.change-photo-btn {
+    background-color: var(--bg-tertiary); 
+    color: var(--text-primary); 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.change-photo-btn:hover {
+    background-color: var(--border-hover); 
+}
+
+/* Nuevos estilos para la selección de tema */
+.theme-selector {
+    display: flex;
+    gap: 1rem; 
+    margin-top: 1rem;
+}
+
+.theme-button {
+    flex: 1; 
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    font-weight: 500;
+}
+
+.theme-button:hover {
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.theme-button.active {
+    border-color: var(--accent-primary); 
+    background-color: var(--accent-primary);
+    color: var(--text-on-accent); 
+    box-shadow: var(--shadow);
+}
+
+.theme-button.active .theme-icon,
+.theme-button.active .theme-text {
+    color: var(--text-on-accent); 
+}
+
+.theme-icon {
+    font-size: 2.5rem; 
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary); 
+    display: block;
+}
+
+.theme-text {
+    font-size: 0.9rem;
+}
+
+/* Estilos para la insignia de rango */
+.user-rank-badge {
+    display: inline-block;
+    margin-left: 0.5rem; /* Ajustado para estar al lado del nombre de usuario */
+    padding: 0.15rem 0.5rem;
+    border-radius: 5px;
+    background-color: var(--rank-owner-bg); 
+    color: var(--rank-owner-text);
+    font-size: 0.75em; 
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap; 
+    align-self: center; /* Centra verticalmente si el wrapper es flex */
+}
+
+/* Estilos para formularios del panel de administración */
+.admin-action-form {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color); 
+}
+
+.admin-action-form h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.admin-action-form:last-of-type {
+    border-bottom: none; 
+}
+
+/* Estilos para las notificaciones */
+.notifications-container {
+    position: relative;
+    list-style: none; 
+    margin-right: 1rem; 
+    /* Añadido para asegurar la alineación vertical con otros nav-links */
+    display: flex; 
+    align-items: center;
+    height: 100%; /* Asegura que la altura sea igual a otros enlaces si es necesario */
+}
+
+.notification-bell {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    position: relative;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    display: inline-block; 
+}
+
+.notification-bell:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--accent-hover);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--notification-badge-bg); 
+    color: var(--notification-badge-text);
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 0.2em 0.5em;
+    min-width: 1.5em; 
+    text-align: center;
+    line-height: 1.5em;
+    transform: translate(25%, -25%);
+    box-shadow: 0 0 0 2px var(--bg-secondary); 
+}
+
+.notifications-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    min-width: 250px; /* Ancho más compacto */
+    max-width: 280px; /* Ancho más compacto */
+    z-index: 1100; 
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s ease-out;
+    display: flex;
+    flex-direction: column; 
+    overflow: hidden; 
+}
+
+.notifications-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notifications-dropdown .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary); 
+}
+
+.notifications-dropdown .dropdown-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.notifications-dropdown .dropdown-content {
+    max-height: 180px; /* Altura más compacta para mostrar algunas notificaciones */
+    overflow-y: auto; 
+    padding: 0.5rem 0; 
+    flex-grow: 1; 
+}
+
+.notifications-dropdown .dropdown-content .no-notifications {
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start; 
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+    font-size: 0.9em;
+    cursor: pointer;
+    line-height: 1.4;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-item.unread {
+    background-color: var(--notification-unread-bg); 
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.notification-item.read {
+    color: var(--notification-read-text);
+}
+
+.notification-item:hover {
+    background-color: var(--notification-item-hover-bg);
+}
+
+.notification-item .icon {
+    margin-right: 0.75rem;
+    font-size: 1.1em;
+    color: var(--accent-primary); 
+    flex-shrink: 0; 
+}
+
+.notification-item .message-text {
+    flex-grow: 1; 
+}
+
+.notification-item .timestamp {
+    font-size: 0.75em;
+    color: var(--text-tertiary);
+    margin-top: 0.25rem;
+    text-align: right;
+    flex-shrink: 0; 
+    margin-left: 1rem; 
+}
+
+.notifications-dropdown .dropdown-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    background-color: var(--bg-tertiary);
+}
+
+.notifications-dropdown .dropdown-footer a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.notifications-dropdown .dropdown-footer a:hover {
+    text-decoration: underline;
+}
+
+.mark-all-read-btn {
+    background: none;
+    border: none;
+    color: var(--accent-primary);
+    font-size: 0.8em;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.mark-all-read-btn:hover {
+    background-color: var(--accent-primary);
+    color: var(--text-on-accent);
+}
+
+/* Estilos para las sugerencias de comandos (de admin_panel.php) */
+.command-suggestions {
+    border: 1px solid var(--border-color);
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: var(--bg-secondary);
+    border-radius: 0 0 8px 8px;
+    position: absolute; 
+    width: calc(100% - 2px); 
+    z-index: 100; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; 
+    left: 0; 
+    right: 0; 
+}
+
+.command-suggestions div {
+    padding: 8px 12px; 
+    cursor: pointer;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9em; 
+    line-height: 1.3; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.command-suggestions div:last-child {
+    border-bottom: none;
+}
+
+.command-suggestions div:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--accent-primary);
+}
+
+.command-suggestions div strong {
+    flex-shrink: 0; 
+}
+
+.command-suggestions div span {
+    flex-grow: 1; 
+    text-align: right; 
+    margin-left: 10px; 
+    color: var(--text-secondary); 
+    font-size: 0.8em; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.5rem 1rem; 
+    }
+    
+    .nav-links {
+        gap: 0.25rem;
+    }
+    
+    .nav-links a {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .form-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .membership-plans {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ocultar el dropdown en móviles si el menú de navegación principal cambia drásticamente */
+    .profile-dropdown {
+        position: static; 
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        transform: translateY(0);
+        opacity: 1; 
+        visibility: visible;
+        display: none; 
+    }
+
+    .user-profile.active .profile-dropdown {
+        display: block; 
+    }
+
+    .user-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem; 
+    }
+    .user-profile .user-name, .user-profile .fas.fa-chevron-down {
+        display: none; 
+    }
+
+    .theme-selector {
+        flex-direction: column; 
+    }
+
+    /* Notificaciones en móvil */
+    .notifications-dropdown {
+        min-width: unset; 
+        max-width: 90%; 
+        left: 50%; 
+        transform: translateX(-50%) translateY(10px); 
+        margin-left: 0; 
+        margin-right: 0;
+    }
+
+    .notifications-dropdown.active {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.125rem;
+    }
+    
+    .nav-links a span {
+        display: none;
+    }
+    
+    .form-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+}
